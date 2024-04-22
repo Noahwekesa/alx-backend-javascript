@@ -1,3 +1,3 @@
-export default function returnHowManyHoods(...theArgs) {
-  return theArgs.length;
+export default function returnHowManyHoods(...expansions) {
+  return expansions.length;
 }
