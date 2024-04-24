@@ -1,7 +1,7 @@
 export default function getFullResponseFromAPI(success) {
-  return new promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (success) {
-      reesolve({
+      resolve({
         status: 200,
         body: 'Success',
       });
