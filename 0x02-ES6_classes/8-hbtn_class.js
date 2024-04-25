@@ -5,7 +5,7 @@ export default class HolbertonClass {
   }
 
   [Symbol.toPrimitive](input) {
-    if (input === "number") {
+    if (input === 'number') {
       return this._seze;
     }
     return this._location;
