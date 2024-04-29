@@ -7,7 +7,7 @@ function updateStudentGradeByCity(students, city, newGrades) {
       );
       return {
         ...student,
-        grade: foundGrade ? foundGrade.grade : "N/A",
+        grade: foundGrade ? foundGrade.grade : 'N/A',
       };
     });
 }
