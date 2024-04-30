@@ -1,8 +1,8 @@
-import cleanSet from "./8-clean_set.js";
+import cleanSet from './8-clean_set.js';
 
 console.log(
-  cleanSet(new Set(["bonjovi", "bonaparte", "bonappetit", "banana"]), "bon"),
+  cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), 'bon'),
 );
 console.log(
-  cleanSet(new Set(["bonjovi", "bonaparte", "bonappetit", "banana"]), ""),
+  cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), ''),
 );
