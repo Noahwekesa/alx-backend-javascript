@@ -1,1 +1,1 @@
-# Node js basics
+# Node JS basics
