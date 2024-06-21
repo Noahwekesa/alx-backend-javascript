@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "mocha": "^10.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.5.0"
   }
 }
