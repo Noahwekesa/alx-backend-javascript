@@ -1,19 +1,20 @@
-"use strict";
-const chai = require("chai");
+const sendPaymentRequestToApi = require("./4-payment");
 const sinon = require("sinon");
+let { expect } = require("chai");
 
-const Utils = require("./utils.js");
-const sendPaymentRequestToApi = require("./4-payment.js");
+const Utils = require("./utils");
 
-describe("sendPaymentRequestToApi function", () => {
-  const spyConsole = sinon.spy(console, "log");
-
-  it("validate the usage of the Utils function", () => {
+describe("calculateNumber", function () {
+  it("should return x", () => {
     const stubUtils = sinon.stub(Utils, "calculateNumber");
-    stubUtils.withArgs("SUM", 100, 20).returns(10);
+    stubUtils.returns(10);
+    const spyConsole = sinon.stub(console, "log");
+
     sendPaymentRequestToApi(100, 20);
-    chai.expect(spyConsole.calledOnce).to.be.true;
-    chai.expect(spyConsole.calledWith("The total is: 10")).to.be.true;
+
+    expect(stubUtils.calledOnceWithExactly("SUM", 100, 20)).to.be.true;
+    expect(spyConsole.calledOnceWithExactly("The total is: 10")).to.be.true;
+
     stubUtils.restore();
     spyConsole.restore();
   });

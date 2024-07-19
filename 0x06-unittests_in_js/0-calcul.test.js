@@ -1,22 +1,15 @@
-const calculateNumber = require("./0-calcul.js");
 const assert = require("assert");
+const calculateNumber = require("./0-calcul");
 
-describe("calculateNumber", () => {
-  it("rounding of a", () => {
-    assert.equal(calculateNumber(15.78, 2), 18);
-    assert.equal(calculateNumber(1.2, 0), 1);
-    assert.equal(calculateNumber(3.5, 2), 6);
-  });
-
-  it("rounding of b", () => {
-    assert.equal(calculateNumber(2, 15.78), 18);
-    assert.equal(calculateNumber(0, 1.2), 1);
-    assert.equal(calculateNumber(2, 3.5), 6);
-  });
-
-  it("suming of a and b", () => {
-    assert.equal(calculateNumber(15.78, 2.5), 19);
-    assert.equal(calculateNumber(1.2, 0.2), 1);
-    assert.equal(calculateNumber(3.5, 2.7), 7);
+describe("calculateNumber", function () {
+  it("should return rounded sum", function () {
+    assert.strictEqual(calculateNumber(1, 3), 4);
+    assert.strictEqual(calculateNumber(1, 3.7), 5);
+    assert.strictEqual(calculateNumber(1.2, 3.7), 5);
+    assert.strictEqual(calculateNumber(1.5, 3.7), 6);
+    assert.strictEqual(calculateNumber(3.7, 4), 8);
+    assert.strictEqual(calculateNumber(3.2, 3), 6);
+    assert.strictEqual(calculateNumber(0, 3), 3);
+    assert.strictEqual(calculateNumber(6.9, 1), 8);
   });
 });
