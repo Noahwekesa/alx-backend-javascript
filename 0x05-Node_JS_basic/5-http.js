@@ -1,48 +1,31 @@
 const http = require('http');
-const fs = require('fs');
+const students = require('./3-read_file_async');
+
+const port = 1245;
 
 const app = http.createServer((req, res) => {
-  const { url } = req;
-
-  switch (url) {
+  switch (req.url) {
     case '/':
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.writeHead(200);
       res.end('Hello Holberton School!');
       break;
     case '/students':
-      const filePath = process.argv[2]; // Get database path from argument
-      if (!filePath) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Missing database file');
-        return;
-      }
-
-      fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-          res.writeHead(500, { 'Content-Type': 'text/plain' });
-          res.end('Error reading database');
-          return;
-        }
-
-        const studentList = processStudents(data); // Process student data
-
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(`This is the list of our students\n${studentList}`);
-      });
+      res.writeHead(200);
+      res.write('This is the list of our students\n');
+      students(process.argv[2])
+        .then((data) => {
+          res.end(data);
+        })
+        .catch((error) => {
+          res.end(error.message);
+        });
       break;
     default:
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
-      res.end('Not found');
+      res.writeHead(404);
+      res.end(JSON.stringify({ error: 'Resource not found' }));
   }
 });
 
-function processStudents(data) {
-  // Implement logic to process student data (similar to 3-read_file_async.js)
-  // You can use techniques like split, filter, etc. to manipulate the data
-  // This function can return a formatted string representing the student list
-  return 'Student list processing logic goes here...'; // Replace with actual logic
-}
-
-app.listen(1245);
+app.listen(port);
 
 module.exports = app;
